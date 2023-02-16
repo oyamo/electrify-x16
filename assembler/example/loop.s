@@ -1,7 +1,7 @@
 ; a simple counter program.
 li R1 0x00000000
 ; end
-li R2 0x0000FF
+li R2 0x0000FFFF
 ; memory location of loop start
 li R3 loop
 loop:

@@ -52,9 +52,16 @@ func genMemOpLiCode(tk util.Token, baseOp *int16) error {
 	// check if imediate is an hexadecimal value
 	re := regexp.MustCompile(hexSyntax)
 	if re.Match([]byte(tk.Operands[1])) {
-		hexValue, err := strconv.ParseInt(tk.Operands[1], 0, 0xF)
+		hexValue, err := strconv.ParseInt(tk.Operands[1], 0, 0x20)
+
 		if err != nil {
-			return fmt.Errorf("failed to parse %s at \"%s\" in line %d")
+			return fmt.Errorf("failed to parse %s at \"%s\" in line %d \n %s", tk.Operands[1], tk.Raw, tk.Line, err)
+		}
+
+		// truncate
+		if hexValue > 0xFF {
+			fmt.Printf("warning: value %s at \"%s\" in line %d has been truncated to 0xFF\n", tk.Operands[1], tk.Raw, tk.Line)
+			hexValue = 0xFF
 		}
 		*baseOp = *baseOp | (reg << 8) | int16(hexValue)
 	} else {
