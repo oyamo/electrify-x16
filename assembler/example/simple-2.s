@@ -1,0 +1,3 @@
+li R1 0x012
+li R1 0x239
+halt
