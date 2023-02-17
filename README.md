@@ -20,7 +20,10 @@ In addition to the assembler, there is a simulator for the custom machine. This 
    - Safe shutdown on error
 
 ## Screenshots
-
+### Assembler
+![assembler.png](screenshots%2Fassembler.png)
+### Simulator
+![machine.png](screenshots%2Fmachine.png)
 
 ### ISA Datasheet
 The following are the instructions supported by the architecture of the simulation
