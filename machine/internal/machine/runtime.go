@@ -45,25 +45,109 @@ func (m *Machine) Sw(regSrc uint8, regAddr uint8) {
 func (m *Machine) Add(regDest uint8, regSrc1 uint8, regSrc2 uint8) {
 	v1 := m.Registers[regSrc1]
 	v2 := m.Registers[regSrc2]
-	m.Registers[regDest] = v2 + v1
+	addition := v1 + v2
+
+	// Set the conditional flags based on the addition
+	var zero, negative bool
+	if addition == 0 {
+		zero = true
+	}
+	if addition < 0 {
+		negative = true
+	}
+
+	// Store the flags in the COND register
+	condValue := uint16(0)
+	if zero {
+		condValue |= 1 << 0
+	}
+
+	if negative {
+		condValue |= 1 << 1
+	}
+	m.Registers[COND] = int16(condValue)
+	m.Registers[regDest] = addition
 }
 
 func (m *Machine) Sub(regDest uint8, regSrc1 uint8, regSrc2 uint8) {
 	v1 := m.Registers[regSrc1]
 	v2 := m.Registers[regSrc2]
-	m.Registers[regDest] = v1 - v2
+	sub := v1 - v2
+
+	// Set the conditional flags based on the sub
+	var zero, negative bool
+	if sub == 0 {
+		zero = true
+	}
+	if sub < 0 {
+		negative = true
+	}
+
+	// Store the flags in the COND register
+	condValue := uint16(0)
+	if zero {
+		condValue |= 1 << 0
+	}
+	if negative {
+		condValue |= 1 << 1
+	}
+	m.Registers[COND] = int16(condValue)
+
+	m.Registers[regDest] = sub
 }
 
 func (m *Machine) Mult(regDest uint8, regSrc1 uint8, regSrc2 uint8) {
 	v1 := m.Registers[regSrc1]
 	v2 := m.Registers[regSrc2]
-	m.Registers[regDest] = v1 * v2
+	multi := v1 * v2
+
+	// Set the conditional flags based on the multi
+	var zero, negative bool
+	if multi == 0 {
+		zero = true
+	}
+	if multi < 0 {
+		negative = true
+	}
+
+	// Store the flags in the COND register
+	condValue := uint16(0)
+	if zero {
+		condValue |= 1 << 0
+	}
+
+	if negative {
+		condValue |= 1 << 1
+	}
+	m.Registers[COND] = int16(condValue)
+	m.Registers[regDest] = multi
 }
 
 func (m *Machine) Div(regDest uint8, regSrc1 uint8, regSrc2 uint8) {
 	v1 := m.Registers[regSrc1]
 	v2 := m.Registers[regSrc2]
-	m.Registers[regDest] = v1 / v2
+	res := v1 / v2
+
+	// Set the conditional flags based on the res
+	var zero, negative bool
+	if res == 0 {
+		zero = true
+	}
+	if res < 0 {
+		negative = true
+	}
+
+	// Store the flags in the COND register
+	condValue := uint16(0)
+	if zero {
+		condValue |= 1 << 0
+	}
+
+	if negative {
+		condValue |= 1 << 1
+	}
+	m.Registers[COND] = int16(condValue)
+	m.Registers[regDest] = res
 }
 
 func (m *Machine) J(addr int16) {

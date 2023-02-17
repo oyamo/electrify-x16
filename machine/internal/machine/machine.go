@@ -105,7 +105,7 @@ func (m *Machine) Log(i *util.Instruction) {
 	pc := m.Registers[PC]
 	r2 := m.Registers[R2]
 	r3 := m.Registers[R3]
-	fmt.Printf("%s AT PC = \033[1;34m0x%X\u001B[0m\tR1 = \033[1;33m0x%X\u001B[0m\tR2 =  \u001B[1;36m0x%X\u001B[0m\tR3 =  \u001B[1;35m0x%X\u001B[0m\n", i.String(), pc, r1, r2, r3)
+	fmt.Printf("%s AT PC = \033[1;34m0x%03X\u001B[0m\tR1 = \033[1;33m0x%03X\u001B[0m\tR2 =  \u001B[1;36m0x%03X\u001B[0m\tR3 =  \u001B[1;35m0x%03X\u001B[0m\n", i.String(), pc, r1, r2, r3)
 }
 
 func (m *Machine) RunCpu() error {
