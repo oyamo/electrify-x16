@@ -49,6 +49,7 @@ git clone git@github.com:oyamo/electrify-x16.git
 ### Compile the tools
 A make configuration has been provided for ease of setup. Run the following command to compile
 ```shell
+cd electrify-x16
 make -B
 ```
 The tools will be installed and copied into `GOPATH/bin` directory. To check GOPATH, run `go env GOPATH` command 
