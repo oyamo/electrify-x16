@@ -6,6 +6,18 @@ The goal of this project is to create an assembler that can take text assembly c
 
 In addition to the assembler, there is a simulator for the custom machine. This simulator takes the output of the assembler and executes it correctly, allowing us to test our programs and ensure they are functioning as intended.
 
+## Table of contents
+<!-- TOC -->
+* [electrify-x16](#electrify-x16)
+  * [Table of contents](#table-of-contents)
+  * [Features](#features)
+  * [Screenshots](#screenshots)
+    * [Assembler](#assembler)
+    * [Simulator](#simulator)
+  * [Getting Started](#getting-started)
+    * [ISA Datasheet](#isa-datasheet)
+<!-- TOC -->
+
 ## Features
 1. ### Assembler  - [View](./assembler)
     - Tokeniser - Converts source file to tokens
@@ -24,6 +36,9 @@ In addition to the assembler, there is a simulator for the custom machine. This 
 ![assembler.png](screenshots%2Fassembler.png)
 ### Simulator
 ![machine.png](screenshots%2Fmachine.png)
+
+## Getting Started
+
 
 ### ISA Datasheet
 The following are the instructions supported by the architecture of the simulation
@@ -46,3 +61,21 @@ The following are the instructions supported by the architecture of the simulati
 | 0x0D   | inc         | Increment Register: `inc R1`<br>Increment `R1`                                                                 |
 | 0x0E   | dec         | Decrement Register: `dec R1`<br>Decrement `R1`                                                                 |
 
+### Example code
+```plan9_x86
+; a simple counter program.
+li R1 0x00000000
+; end
+li R2 0x0000FFFF
+; memory location of loop start
+li R3 loop
+loop:
+  ; store the contents of R1 at the memory location pointed by R1
+  sw R1 R1
+  ; increment the counter
+  inc R1
+  ; loop if the counter hasn't yet reached the end
+  bne R1 R2 R3
+  ; end program
+  halt
+```
