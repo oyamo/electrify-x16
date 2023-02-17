@@ -2,9 +2,9 @@
 
 Custom Instruction Set Assembler and Simulator built with **Golang**
 
-The goal of this project is to create an assembler that can take text assembly code written for our custom instruction set and encode it into a bytecode format consisting of 16-bit numbers. This will allow us to more efficiently execute programs on our custom machine.
+The assembler takes in plain/text assembly code and encodes it into a bytecode format consisting of 16-bit numbers. This gives the simulator the ability to interprate and execute the program. 
 
-In addition to the assembler, there is a simulator for the custom machine. This simulator takes the output of the assembler and executes it correctly, allowing us to test our programs and ensure they are functioning as intended.
+In addition to the assembler, there is a simulator for the custom machine instructions. This simulator takes the output of the assembler and executes it correctly, allowing us to test our programs and ensure they are functioning as intended. 
 
 ## Table of contents
 <!-- TOC -->
