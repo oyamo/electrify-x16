@@ -1,6 +1,6 @@
 # electrify-x16
 
-Custom Instruction Set Assembler and Simulator
+Custom Instruction Set Assembler and Simulator built with **Golang**
 
 The goal of this project is to create an assembler that can take text assembly code written for our custom instruction set and encode it into a bytecode format consisting of 16-bit numbers. This will allow us to more efficiently execute programs on our custom machine.
 
@@ -8,8 +8,19 @@ In addition to the assembler, there is a simulator for the custom machine. This 
 
 ## Features
 1. ### Assembler  - [View](./assembler)
-    - s
+    - Tokeniser - Converts source file to tokens
+    - Symbol table to map symbol/labels to address
+    - Syntax error checker
+    - Saves bytecode to binfile
 2. ### Simulator - [View](./machine)
+   - 5 Registers - R1,R2,R3, COND and PC
+   - Single CPU with clockspeed modifiable
+   - 64K memory
+   - Booting & Shutdown
+   - Safe shutdown on error
+
+## Screenshots
+
 
 ### ISA Datasheet
 The following are the instructions supported by the architecture of the simulation
