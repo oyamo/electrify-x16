@@ -36,6 +36,9 @@ type Machine struct {
 // Boot Set up the machine by configuring memory and CPU registers
 // To maje the machine ready for use
 func Boot() *Machine {
+	// Display Asciii
+	fmt.Printf("\033[1;32m%s\033[0m\n", AsciWelcome)
+
 	var machine Machine
 	// initialise registers
 	machine.Registers = make(map[uint8]int16, 4)
@@ -59,6 +62,7 @@ func Boot() *Machine {
 
 // ShutDown Destroy the machine
 func (m *Machine) ShutDown() error {
+	fmt.Println("Bye. Shutting down..")
 	// Clear memory contents
 	m.Registers = make(map[uint8]int16, 5)
 	m.Memory = make(map[int16]int16, MemorySize)
