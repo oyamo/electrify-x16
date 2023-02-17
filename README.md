@@ -15,7 +15,10 @@ In addition to the assembler, there is a simulator for the custom machine. This 
     * [Assembler](#assembler)
     * [Simulator](#simulator)
   * [Getting Started](#getting-started)
+    * [Clone the repo](#clone-the-repo)
+
     * [ISA Datasheet](#isa-datasheet)
+    * [Example code](#example-code)
 <!-- TOC -->
 
 ## Features
@@ -38,7 +41,32 @@ In addition to the assembler, there is a simulator for the custom machine. This 
 ![machine.png](screenshots%2Fmachine.png)
 
 ## Getting Started
+### Clone the repo
+Using git, make this repository available in your local environment.
+```shell
+git clone git@github.com:oyamo/electrify-x16.git
+```
+### Compile the tools
+A make configuration has been provided for ease of setup. Run the following command to compile
+```shell
+make -B
+```
+The tools will be installed and copied into `GOPATH/bin` directory. To check GOPATH, run `go env GOPATH` command 
 
+## Usage
+This program provides two essential tools: the Assembler and the Smulator.
+
+### Assembler
+The Assembler is a tool that compiles an assembly language source code file into a machine code file. To use the Assembler, run the following command:
+```shell
+assembler -o example.out example.s
+```
+
+### Machine
+The Machine is an emulated x16 device. To use the Machine, run the following command:
+```shell
+machine -load example.out
+```
 
 ### ISA Datasheet
 The following are the instructions supported by the architecture of the simulation
@@ -79,3 +107,6 @@ loop:
   ; end program
   halt
 ```
+
+## Licence
+MIT Licence
